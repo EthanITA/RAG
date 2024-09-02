@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: 'Nunito', 'Noto Sans', sans-serif;
+    }
+
+    :root, #__nuxt, body {
+        @apply h-full w-full bg-gray-100;
+        --glass-reflex-opacity: 0;
+    }
+
+}
+
+* {
+    @apply selection:bg-gray-800/20;
+}
+
+*, a{
+    -webkit-user-drag: none;
+}
+
+p {
+    @apply text-xl mt-2;
+}
+
+h2 {
+    @apply text-4xl font-extrabold mb-4;
+}
+
+h3, .card-title {
+    @apply font-bold text-2xl;
+}
+
+img {
+    @apply select-none;
+}
+
+.mockup-code {
+    --n: 31.3815% 0.021108 254.139175;
+    --nc: 74.6477% 0.0216 264.435964;
+}
+
+.mockup-code:before {
+    box-shadow:
+            1.4em 0 0 0 #FE5F57,
+            2.8em 0 0 0 #FEBC2E,
+            4.2em 0 0 0 #29C940;
+    opacity: 1;
+}

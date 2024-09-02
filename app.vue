@@ -14,12 +14,13 @@
       </button>
     </div>
     <div class="section border">
-      <h2>Tokens {{ tokens.length - 2 }}</h2>
+      <h2>Tokens {{ Math.max(tokens.length - 2, 0) }}</h2>
       <div class="overflow-auto flex-1">{{ tokens }}</div>
     </div>
     <div class="section col-span-full border">
       <h2>Embedding {{ embeddings.length }}</h2>
-      <div class="overflow-auto">{{ embeddings }}</div>
+      <div v-if="computing" class="skeleton h-full w-full" />
+      <div v-else class="overflow-auto">{{ embeddings }}</div>
     </div>
   </div>
 </template>
@@ -27,17 +28,25 @@
 const text = ref("");
 const tokens = ref<string[]>([]);
 const embeddings = ref<number[][]>([]);
-
+const computing = ref(false);
 const ai = useAI();
 
-watch(text, () => {
-  tokens.value = ai.tokenize(text.value);
-});
+watch(
+  text,
+  () => {
+    tokens.value = ai.tokenize(text.value);
+  },
+  { immediate: true },
+);
 
-const embed = () =>
-  ai.embed(text.value).then((res) => {
-    embeddings.value = res;
-  });
+const embed = () => {
+  computing.value = true;
+  ai.embed(text.value)
+    .then((res) => {
+      embeddings.value = res;
+    })
+    .finally(() => (computing.value = false));
+};
 </script>
 <style scoped>
 .section {

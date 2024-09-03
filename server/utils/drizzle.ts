@@ -1,15 +1,19 @@
-import {drizzle} from 'drizzle-orm/postgres-js'
+import { drizzle } from "drizzle-orm/postgres-js";
 
-import * as schema from '~/schema'
+import * as schema from "~/schema";
 import postgres from "postgres";
 
-export const tables = schema
+export const tables = schema;
 
-export const db = drizzle(postgres({
+export const db = drizzle(
+  postgres({
     database: "postgres",
     user: "root",
     password: "password",
-    host: "localhost"
-}), {schema})
+    host: "localhost",
+  }),
+  { schema },
+);
 
-export type Kb = typeof schema.kb.$inferSelect
+export type KbSelect = typeof schema.kb.$inferSelect;
+export type KbInsert = typeof schema.kb.$inferInsert;

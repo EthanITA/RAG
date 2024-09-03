@@ -4,10 +4,11 @@ export default defineConfig({
   dialect: "postgresql",
   schema: "./schema/index.ts",
   out: "./drizzle",
-  dbCredentials:{
+  dbCredentials: {
     host: "localhost",
     database: "postgres",
     user: "root",
     password: "password",
-  }
+    ssl: false,
+  },
 });

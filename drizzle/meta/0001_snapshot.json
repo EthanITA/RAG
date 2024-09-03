@@ -1,6 +1,6 @@
 {
-  "id": "457fa947-c372-4835-910f-319817cfb2f0",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "674da65c-f7f2-4e0a-a746-514b9568ef96",
+  "prevId": "457fa947-c372-4835-910f-319817cfb2f0",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -27,7 +27,24 @@
           "notNull": true
         }
       },
-      "indexes": {},
+      "indexes": {
+        "embeddingIndex": {
+          "name": "embeddingIndex",
+          "columns": [
+            {
+              "expression": "embedding",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "vector_cosine_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "hnsw",
+          "with": {}
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}

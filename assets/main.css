@@ -54,3 +54,7 @@ img {
             4.2em 0 0 0 #29C940;
     opacity: 1;
 }
+
+.section {
+    @apply flex flex-col gap-2 p-2;
+}

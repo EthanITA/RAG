@@ -1,0 +1,52 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    ports:
+      - "8080:3000"
+    environment:
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+      - ollama
+    networks:
+      - rag-net
+  migration:
+    build:
+      context: .
+      dockerfile: Dockerfile-migration
+    environment:
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    networks:
+      - rag-net
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - rag-net
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    networks:
+      - rag-net
+    volumes:
+      - ollama-data:/root/.ollama
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 1 && ollama pull bge-m3 & ollama pull llama3.1 & wait"]
+volumes:
+  postgres-data:
+  ollama-data:
+
+networks:
+  rag-net:
+    driver: bridge

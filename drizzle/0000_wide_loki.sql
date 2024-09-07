@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS vector;
+
 CREATE TABLE IF NOT EXISTS "kb" (
 	"id" serial NOT NULL,
 	"content" text NOT NULL,

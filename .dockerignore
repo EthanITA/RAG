@@ -1,0 +1,7 @@
+.data
+.nuxt
+node_modules
+.idea
+.dockerignore
+compose.yaml
+Dockerfile*

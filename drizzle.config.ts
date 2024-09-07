@@ -5,7 +5,7 @@ export default defineConfig({
   schema: "./schema/index.ts",
   out: "./drizzle",
   dbCredentials: {
-    host: "localhost",
+    host: process.env.DB_HOST ?? "localhost",
     database: "postgres",
     user: "root",
     password: "password",

@@ -10,7 +10,7 @@ export const db = drizzle(
     database: "postgres",
     user: "root",
     password: "password",
-    host: "localhost",
+    host: process.env.DB_HOST ?? "localhost",
   }),
   { schema },
 );

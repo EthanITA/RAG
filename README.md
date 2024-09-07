@@ -7,8 +7,8 @@ This project uses BGE-M3 and Llama3.1 AI models to run the RAG model served by [
 
 ## How to run
 ```shell
-git clone https://github.com/EthanITA/RAG_demo.git
-cd RAG_demo
+git clone https://github.com/EthanITA/RAG.git
+cd RAG
 docker compose up --build -d
 # Wait for the containers to pulls the AI models
 ```

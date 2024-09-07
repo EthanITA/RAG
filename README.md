@@ -3,6 +3,8 @@ This is a demo of RAG (Retrieval Augmented Generation), a model that combines a 
 
 This project uses BGE-M3 and Llama3.1 AI models to run the RAG model served by [Ollama](https://ollama.com/)
 
+![img.png](RAG_arch.png)
+
 ## How to run
 ```shell
 git clone https://github.com/EthanITA/RAG_demo.git
@@ -21,7 +23,6 @@ All the necessaries requirements to run the project are already satisfied by the
 The following volumes will be created:
 * `rag_demo_postgres-data` for the PostgreSQL database
 * `rag_demo_ollama-data` for the Ollama AI models
-
 
 ### ! Important notes !
 

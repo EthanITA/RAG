@@ -1,75 +1,36 @@
-# Nuxt 3 Minimal Starter
+# RAG Demo
+This is a demo of RAG (Retrieval Augmented Generation), a model that combines a retriever with a generator. The retriever is used to retrieve relevant knowledge base (KB) from the Vector Database added directly from the interface and then fed to the generator to generate the answer.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This project uses BGE-M3 and Llama3.1 AI models to run the RAG model served by [Ollama](https://ollama.com/)
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+## How to run
+```shell
+git clone https://github.com/EthanITA/RAG_demo.git
+cd RAG_demo
+docker compose up --build -d
+# Wait for the containers to pulls the AI models
 ```
+Visit `http://localhost:8080`
 
-## Development Server
+## What's happening
+All the necessaries requirements to run the project are already satisfied by the compose.yml thanks to Docker:
+* Frontend + Backend (Nuxt.js + SSR)
+* Database + migrations (PostgreSQL + pgvector + Drizzle ORM)
+* AI models (Llama3.1 + bge-m3) by using Ollama
 
-Start the development server on `http://localhost:3000`:
+The following volumes will be created:
+* `rag_demo_postgres-data` for the PostgreSQL database
+* `rag_demo_ollama-data` for the Ollama AI models
 
-```bash
-# npm
-npm run dev
 
-# pnpm
-pnpm run dev
+### ! Important notes !
 
-# yarn
-yarn dev
+It's important to have a good internet connection and enough resource to run the models, make sure to give enough resources to the Docker daemon:
+* Llama3.1 requires at least 10.8GB RAM
+* Models needs at least 6GB of Disk space to be pulled, not considering the space needed for other images
 
-# bun
-bun run dev
-```
+Recommended resources:
+* 11GB RAM
+* 16GB Free disk space
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Inference may be slow due to CPU-only inference

@@ -42,7 +42,7 @@ services:
       - rag-net
     volumes:
       - ollama-data:/root/.ollama
-    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 1 && ollama pull bge-m3 & ollama pull llama3.1 & wait"]
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 3 && ollama pull bge-m3 & ollama pull llama3.1 & wait"]
 volumes:
   postgres-data:
   ollama-data:

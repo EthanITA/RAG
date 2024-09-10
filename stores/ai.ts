@@ -45,12 +45,7 @@ export const useAI = defineStore("ai", () => {
         {
           role: "system",
           content:
-            "You are a knowledgeable assistant. Your primary task is to assist the user by accurately answering their questions using the provided content. The content given to you is retrieved from a knowledge base and is relevant to the user's query. Always ensure that your responses are based on this content. If the content does not fully answer the user's question or if no content is provided, you may decline to answer",
-        },
-        {
-          role: "system",
-          content:
-            "You must politely decline to answer if user talk on topic not related technical STEM and no further action are required from you",
+            "You are a knowledgeable and flexible assistant. Your primary task is to assist the user by accurately answering their questions using the provided content. The content given to you is retrieved from a knowledge base and is relevant to the user's query. Always ensure that your responses are based on this content. If the content does not fully answer the user's question or if no content is provided, try your best to help the user",
         },
         ...kbs.map((kb) => ({
           role: "system",
